@@ -26,8 +26,10 @@ public class Main {
     }
 
     public static void main(String[] args) {
-        List<Integer> listOne = new ArrayList<>();
-        List<Integer> listTwo = new ArrayList<>();
+        List<Integer> listOne, listTwo;
+
+        listOne = new ArrayList<>();
+        listTwo = new ArrayList<>();
 
         listOne.add(1);
         listOne.add(2);
