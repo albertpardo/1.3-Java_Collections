@@ -78,7 +78,7 @@ public class Main {
         printHashSetIterator(monthsHashSet);
     }
 
-    public static void main(String args[]){
+    public static void main(String[] args){
         ArrayList<Month> monthsArrayList = new ArrayList<>();
 
         addMonthsToArrayListTest(monthsArrayList);
