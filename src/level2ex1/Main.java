@@ -4,15 +4,12 @@ import java.util.HashSet;
 import java.util.Iterator;
 
 public class Main {
-
-    private static void printRestaurantHashSet(HashSet<Restaurant> restaurantHS){
-        Iterator<Restaurant> iteratorHS = restaurantHS.iterator();
-
+    private static void printRestaurantHashSet(HashSet<Restaurant> restaurantHashSet) {
         System.out.println("-- Hashset of restaurants: ");
-        while(iteratorHS.hasNext()){
-            System.out.println(iteratorHS.next().toString());
-        }
+        for ( Restaurant restaurant : restaurantHashSet)
+            System.out.println(restaurant.toString());
     }
+
     public static void main(String[] args){
         HashSet<Restaurant> restaurantHashSet = new HashSet<>();
 
