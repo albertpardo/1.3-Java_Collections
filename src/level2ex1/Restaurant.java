@@ -15,11 +15,16 @@ public class Restaurant {
         if (this == obj) return true;
         if (obj == null || getClass() != obj.getClass()) return false;
         Restaurant restaurant = (Restaurant) obj;
-        return (name.equals(restaurant.name) && points == restaurant.points);
+        return (name.equalsIgnoreCase(restaurant.name) && points == restaurant.points);
     }
 
     @Override
     public int hashCode() {
-        return name.toLowerCase().hashCode();
+        return java.util.Objects.hash(name.toLowerCase(), points);
+    }
+
+    @Override
+    public String toString(){
+        return "name :" + name + ", points: " + points;
     }
 }
