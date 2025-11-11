@@ -16,6 +16,18 @@ public class Main {
         sc.close();
     }
 
+    private static void printReadFileTxtContentByElements(InputStream inputStream){
+        Scanner sc = new Scanner(inputStream);
+        String[] stringsLine;
+
+        while (sc.hasNextLine()) {
+            stringsLine = sc.nextLine().split(" ");
+            if (stringsLine.length > 1)
+                System.out.println(stringsLine[0] + ", " + stringsLine[1]);
+        }
+        sc.close();
+    }
+
     private static boolean existFile(InputStream file){
         if (file != null)
             return true;
@@ -28,7 +40,8 @@ public class Main {
         InputStream inputStream = Main.class.getResourceAsStream(FilesNamesAsConstants.COUNTRIES);
 
         if (existFile(inputStream)){
-            printReadFileTxtContent(inputStream);
+            printReadFileTxtContentByElements(inputStream);
+            //printReadFileTxtContent(inputStream);
         }
     }
 }
