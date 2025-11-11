@@ -46,45 +46,6 @@ Example:
 -   name: restaurant1, score: 8
 -   name: restaurant1, score: 7
 
-* * *
-
-## Level 3
-
-### Exercise 1
-
-Create an application capable of reading a CSV file. This file has 3 fields: name, surname, and ID number (DNI), for each record. It is necessary to sort the people read from the file by their name, surname, or DNI. You may use the list you find most suitable.
-
-The Person class has 3 attributes:
-
--   name
--   surname
--   DNI
-
-The main class has the following menu:
-
-1.  Enter person.
-2.  Show people sorted by name (A-Z).
-3.  Show people sorted by name (Z-A).
-4.  Show people sorted by surname (A-Z).
-5.  Show people sorted by surname (Z-A).
-6.  Show people sorted by DNI (1-9).
-7.  Show people sorted by DNI (9-1).
-8.  Exit.
-
-The program should list the people as in the following example:
-
-
-_Nom_     |  _Cognoms_         |  _NIF_
- ---      |  ---               | ----
-Andreu    |  Ballestero Llenas |  34835767J 
-Miquel    |  Bayona Font       |  48743957B 
-Guillem   |  Capdevila Riu     |  33957834J 
-Albert    |  Carbonell Ferrer  |  77364986R
-Ferran    |  Casas Coderch     |  23047848P
-Maria     |  Casellas Fuste    |  47102244S
-Genis     |  Ciutat Vendrell   |  39718459N 
-
-
 
 ## 📋 Requirements
 
