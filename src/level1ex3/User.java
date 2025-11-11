@@ -9,6 +9,10 @@ public class User {
         this.points = 0;
     }
 
+    public int getPoints(){
+        return points;
+    }
+
     public void addPoint(){
         points ++;
     }

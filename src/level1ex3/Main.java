@@ -1,19 +1,9 @@
 package level1ex3;
 
-import javax.sound.midi.Synthesizer;
-import java.awt.*;
-import java.awt.desktop.SystemEventListener;
 import java.io.*;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
-    private static void startGame(File inputFile, String classificationNameFile) {
-
-    }
-
     private static void printReadFileTxtContent(InputStream inputStream){
         Scanner sc = new Scanner(inputStream);
         while (sc.hasNextLine()) {
@@ -40,7 +30,7 @@ public class Main {
         System.err.println(FilesNamesAsConstants.COUNTRIES + " has not been found.");
         return false;
     }
-    private static HashMap<String, String> getContriesFromFile(InputStream inputStream) {
+    private static HashMap<String, String> getCountriesFromFile(InputStream inputStream) {
         HashMap<String, String> countriesHM = new HashMap<>();
         Scanner sc = new Scanner(inputStream);
         String[] stringsLine;
@@ -62,19 +52,65 @@ public class Main {
         }
     }
 
+    private static String inputStringByCli(String msgQuest, String msgErr){
+        Scanner scanner = new Scanner(System.in);
+        String input = "";
+
+        while (input.isEmpty()) {
+            System.out.println(msgQuest);
+            input = scanner.nextLine();
+            if (input.isEmpty())
+                System.err.println(msgErr);
+        }
+        return input;
+    }
+    private static User getUser(){
+        String name;
+
+        name = inputStringByCli("What is your name?", "Empty name is not allowed!");
+        return (new User(name));
+    }
+
+    private static void play(User user, HashMap<String, String> countryCapitalHashMap) {
+        ArrayList<String> keyCountriesArrayList= new ArrayList<>(countryCapitalHashMap.keySet());
+        Collections.shuffle(keyCountriesArrayList);
+        String answer;
+        String country;
+        String capital;
+        int numQuestions = 10;
+
+        for (int i = 0; i < numQuestions; i++){
+            country = keyCountriesArrayList.get(i);
+            capital = countryCapitalHashMap.get(country);
+            answer = inputStringByCli("What is the capital for " + country + "?", "Empty capital is not allowed!");
+            if (answer.equalsIgnoreCase(capital))
+                user.addPoint();
+            else
+                System.out.println("Your answer '" + answer + "' is wrong. The capital for '" + country + "' is '" + capital + "'.");
+        }
+        System.out.println(" -- The game has ended -- ");
+        System.out.println(" You answered " + user.getPoints() + " out of " + numQuestions + " questions correctly.");
+    }
+
+    private static void playGame(HashMap<String, String> countryCapitalHashMap, String outputFile){
+        User user;
+
+        user = getUser();
+        play(user, countryCapitalHashMap);
+        writeResultToFile(user.getStringFormatToPutInClassificationFile(), outputFile);
+    }
+
     public static void main(String[] args) {
 
         InputStream inputStream = Main.class.getResourceAsStream(FilesNamesAsConstants.COUNTRIES);
-        HashMap<String, String> countriesHashMap;
+        HashMap<String, String> countriesCapitalHashMap;
 
         if (existFile(inputStream)){
             //printReadFileTxtContentByElements(inputStream);
             //printReadFileTxtContent(inputStream);
-            countriesHashMap = getContriesFromFile(inputStream);
-            System.out.println(countriesHashMap);
-
-            String textToWrite = "Esta es una línea de texto de ejemplo.";
-            writeResultToFile(textToWrite, FilesNamesAsConstants.CLASSIFICATION);
+            countriesCapitalHashMap = getCountriesFromFile(inputStream);
+            System.out.println(countriesCapitalHashMap);
+            playGame(countriesCapitalHashMap, FilesNamesAsConstants.CLASSIFICATION);
         }
     }
 }
