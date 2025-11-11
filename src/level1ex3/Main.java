@@ -1,6 +1,7 @@
 package level1ex3;
 
 import javax.sound.midi.Synthesizer;
+import java.awt.*;
 import java.awt.desktop.SystemEventListener;
 import java.io.*;
 import java.util.HashMap;
@@ -53,6 +54,13 @@ public class Main {
         return countriesHM;
     }
 
+    private static void writeResultToFile(String textToWrite, String outpuFile){
+        try (PrintWriter writer = new PrintWriter(new FileWriter(outpuFile, true))) {
+            writer.println(textToWrite);
+        } catch (IOException e) {
+            System.out.println("ERROR: During writing process -> " + e.getMessage());
+        }
+    }
 
     public static void main(String[] args) {
 
@@ -64,6 +72,9 @@ public class Main {
             //printReadFileTxtContent(inputStream);
             countriesHashMap = getContriesFromFile(inputStream);
             System.out.println(countriesHashMap);
+
+            String textToWrite = "Esta es una línea de texto de ejemplo.";
+            writeResultToFile(textToWrite, FilesNamesAsConstants.CLASSIFICATION);
         }
     }
 }
