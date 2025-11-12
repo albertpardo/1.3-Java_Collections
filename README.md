@@ -65,4 +65,5 @@ This code has been only tested under:
 - *IDE* : IntelliJ IDEA 2025.2.4 (Community Edition)
 - *Java version* : openjdk 21.0.8 2025-07-15
 
->  When run **Level 1/ Exercise 3** with *IntelliJ*  the file `classification.txt` will be located on main folder where you commit this task.
+> When run **Level 1/ Exercise 3** with *IntelliJ*  the file `classification.txt` will be located on main folder where you commit this task.
+> Format for `classification.txt` : *name* space *points*
