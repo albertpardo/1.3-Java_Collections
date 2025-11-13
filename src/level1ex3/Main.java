@@ -4,26 +4,6 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    private static void printReadFileTxtContent(InputStream inputStream){
-        Scanner sc = new Scanner(inputStream);
-        while (sc.hasNextLine()) {
-            System.out.println(sc.nextLine());
-        }
-        sc.close();
-    }
-
-    private static void printReadFileTxtContentByElements(InputStream inputStream){
-        Scanner sc = new Scanner(inputStream);
-        String[] stringsLine;
-
-        while (sc.hasNextLine()) {
-            stringsLine = sc.nextLine().split(" ");
-            if (stringsLine.length > 1)
-                System.out.println(stringsLine[0] + ", " + stringsLine[1]);
-        }
-        sc.close();
-    }
-
     private static boolean existFile(InputStream file){
         if (file != null)
             return true;
@@ -82,7 +62,7 @@ public class Main {
         for (int i = 0; i < numQuestions; i++){
             country = keyCountriesArrayList.get(i);
             capital = countryCapitalHashMap.get(country);
-            answer = inputStringByCli("What is the capital for " + country + "?", "Empty capital is not allowed!");
+            answer = inputStringByCli("What is the capital for " + country + "? (If capital has more than 1 word pur '_' between words. Example: Andorra_la_Vella", "Empty capital is not allowed!");
             if (answer.equalsIgnoreCase(capital))
                 user.addPoint();
             else
@@ -106,10 +86,7 @@ public class Main {
         HashMap<String, String> countriesCapitalHashMap;
 
         if (existFile(inputStream)){
-            //printReadFileTxtContentByElements(inputStream);
-            //printReadFileTxtContent(inputStream);
             countriesCapitalHashMap = getCountriesFromFile(inputStream);
-            System.out.println(countriesCapitalHashMap);
             playGame(countriesCapitalHashMap, FilesNamesAsConstants.CLASSIFICATION);
         }
     }

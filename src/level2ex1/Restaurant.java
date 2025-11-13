@@ -1,8 +1,6 @@
 package level2ex1;
 
-import level1ex1.Month;
-
-public class Restaurant implements Comparable<Restaurant>{
+public class Restaurant{
     private String name;
     private int points;
 
@@ -21,15 +19,6 @@ public class Restaurant implements Comparable<Restaurant>{
     @Override
     public int hashCode() {
         return java.util.Objects.hash(name.toLowerCase(), points);
-    }
-
-    @Override
-    public int compareTo(Restaurant otherRestaurant){
-        int nameComparison = otherRestaurant.name.compareToIgnoreCase(this.name);
-        if (nameComparison != 0) {
-            return nameComparison;
-        }
-        return Integer.compare(otherRestaurant.points, this.points);
     }
 
     @Override

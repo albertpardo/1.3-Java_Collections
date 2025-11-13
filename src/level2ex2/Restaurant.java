@@ -1,6 +1,6 @@
 package level2ex2;
 
-public class Restaurant {
+public class Restaurant  implements Comparable<Restaurant>{
     private String name;
     private int points;
 
@@ -8,6 +8,7 @@ public class Restaurant {
         this.name = name;
         this.points = points;
     }
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj) return true;
@@ -21,6 +22,14 @@ public class Restaurant {
         return java.util.Objects.hash(name.toLowerCase(), points);
     }
 
+    @Override
+    public int compareTo(Restaurant otherRestaurant){
+        int nameComparison = otherRestaurant.name.compareToIgnoreCase(this.name);
+        if (nameComparison != 0) {
+            return nameComparison;
+        }
+        return Integer.compare(otherRestaurant.points, this.points);
+    }
     @Override
     public String toString(){
         return "name :" + name + ", points: " + points;

@@ -56,7 +56,7 @@ public class Main {
         printArrayListForLoop(months);
         System.out.println();
     }
-    private static void dublicateMonthsInMonthsArrayList(ArrayList<Month> monthsArrayList) {
+    private static void duplicateMonthsInMonthsArrayList(ArrayList<Month> monthsArrayList) {
         System.out.println("------ Test Duplicated February in ArrayList ------");
         monthsArrayList.add(new Month("February"));
         monthsArrayList.add(new Month("February"));
@@ -85,7 +85,7 @@ public class Main {
         System.out.println();
         printArrayListIterator(monthsArrayList);
         System.out.println();
-        dublicateMonthsInMonthsArrayList(monthsArrayList);
+        duplicateMonthsInMonthsArrayList(monthsArrayList);
         System.out.println();
         convertArrayListToHashSetAndCheckNoRepeat(monthsArrayList);
     }
